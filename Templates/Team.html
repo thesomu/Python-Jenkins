@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'Form.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <title>Team</title>
+
+    <style>
+    body{
+        background: white;
+    }
+
+    .nav-custom{
+        background-color: #9b59b6;
+    }
+
+    .container {
+            width:1350px;
+            height:190px;
+            padding-top:20px;
+            padding-left:15px;
+            padding-right:15px;
+    }
+
+    .containerLeft{
+        float: left;
+        width: 200px;
+        height: 325px;
+        background-color: #fff;
+        padding: 25px 30px;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(0,0,0,1);
+    }
+
+    img{
+        border-radius: 50%;
+    }
+
+    </style>
+</head>
+<body>
+<div class="top">
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top nav-custom">
+        <span class="navbar-brand">Fashion HUB</span>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#col_target">
+            <span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="col_target">
+            <ul class="navbar-nav ml-auto mr-5">
+                <li class="nav-item dropdown btn-group">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"
+                       href="#">Login</a>
+                    <div class="dropdown-menu dropdown" aria-labelledby="dropdownMenu1">
+                        <a class="dropdown-item" href="#">Admin Login</a>
+                        <a class="dropdown-item" href="{% url 'login' %}">HR Login</a>
+                        <a class="dropdown-item" href="{% url 'employeeLogin' %}">Employee Login</a>
+                        <a class="dropdown-item" href="#">Import/Export Login</a>
+                        <a class="dropdown-item" href="#">Accountant Login</a>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div>
+    <div class="container">
+        <div class="containerLeft">
+            <img src="static\Ashutosh.jpg" style="width: 150px; height: 150px" title="Ashutosh">
+            <center>
+                Admin
+            </center>
+            <br><br>
+            <div>
+                <div style="float:left; padding-left: 25px;">
+                    <a href="#" target="_blank">
+                        <img src="static\Twitter.png" alt="Twitter" width="20" height="20" title="Twitter">
+                    </a>
+                </div>
+                <div style="float:left; padding-left: 16px;">
+                    <a href="#" target="_blank">
+                        <img src="static\Linkedin.png" alt="Linkedin" width="20" height="20" title="Linkedin">
+                    </a>
+                </div>
+                <div style="float: right; padding-right: 25px">
+                    <a href="#" target="_blank">
+                        <img src="static\Instagram.png" alt="Instagram" width="20" height="20" title="Instagram">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="containerLeft">
+            <img src="static\Somnath.jpg" style="width: 150px; height: 150px" title="Somnath">
+            <center>
+                Customer Head
+            </center>
+            <br><br>
+            <div>
+                <div style="float:left; padding-left: 25px;">
+                    <a href="#" target="_blank">
+                        <img src="static\Twitter.png" alt="Twitter" width="20" height="20" title="Twitter">
+                    </a>
+                </div>
+                <div style="float:left; padding-left: 16px;">
+                    <a href="#" target="_blank">
+                        <img src="static\Linkedin.png" alt="Linkedin" width="20" height="20" title="Linkedin">
+                    </a>
+                </div>
+                <div style="float: right; padding-right: 25px">
+                    <a href="#" target="_blank">
+                        <img src="static\Instagram.png" alt="Instagram" width="20" height="20" title="Instagram">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="containerLeft">
+            <img src="static\Harsh.jpg" style="width: 150px; height: 150px" title="Harsh">
+            <center>
+                Import/Export Head
+            </center>
+            <br>
+            <div>
+                <div style="float:left; padding-left: 25px;">
+                    <a href="#" target="_blank">
+                        <img src="static\Twitter.png" alt="Twitter" width="20" height="20" title="Twitter">
+                    </a>
+                </div>
+                <div style="float:left; padding-left: 16px;">
+                    <a href="#" target="_blank">
+                        <img src="static\Linkedin.png" alt="Linkedin" width="20" height="20" title="Linkedin">
+                    </a>
+                </div>
+                <div style="float: right; padding-right: 25px">
+                    <a href="#" target="_blank">
+                        <img src="static\Instagram.png" alt="Instagram" width="20" height="20" title="Instagram">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="containerLeft">
+            <img src="static\Jai.jpg" style="width: 150px; height: 150px" title="Jai">
+            <center>
+                Accounts Head
+            </center>
+            <br><br>
+            <div>
+                <div style="float:left; padding-left: 25px;">
+                    <a href="#" target="_blank">
+                        <img src="static\Twitter.png" alt="Twitter" width="20" height="20" title="Twitter">
+                    </a>
+                </div>
+                <div style="float:left; padding-left: 16px;">
+                    <a href="#" target="_blank">
+                        <img src="static\Linkedin.png" alt="Linkedin" width="20" height="20" title="Linkedin">
+                    </a>
+                </div>
+                <div style="float: right; padding-right: 25px">
+                    <a href="#" target="_blank">
+                        <img src="static\Instagram.png" alt="Instagram" width="20" height="20" title="Instagram">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="containerLeft">
+            <img src="static\Haldia.jpg" style="width: 150px; height: 150px" title="Kanishk">
+            <center>
+                HR Head
+            </center>
+            <br><br>
+            <div>
+                <div style="float:left; padding-left: 25px;">
+                    <a href="https://twitter.com/master_eerie" target="_blank">
+                        <img src="static\Twitter.png" alt="Twitter" width="20" height="20" title="Twitter">
+                    </a>
+                </div>
+                <div style="float:left; padding-left: 16px;">
+                    <a href="https://www.linkedin.com/in/kanishkhaldia/" target="_blank">
+                        <img src="static\Linkedin.png" alt="Linkedin" width="20" height="20" title="Linkedin">
+                    </a>
+                </div>
+                <div style="float: right; padding-right: 25px">
+                    <a href="https://www.instagram.com/master_eerie/" target="_blank">
+                        <img src="static\Instagram.png" alt="Instagram" width="20" height="20" title="Instagram">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

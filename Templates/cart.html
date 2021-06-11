@@ -1,0 +1,148 @@
+{% load static %}
+{% block title %}{% endblock title %}
+{% block main-content %}
+
+<html>
+<head>
+<title>shopping website</title>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" 
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <!------------------------------------Nav-Bar------------------------------------>
+
+    
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top nav-custom">
+       <a class="navbar-brand" href="" style="text-align: center;  padding-left: 15px; padding-right: 150px;"><i class="material-icons" style="font-size: 30px; color:  yellow; text-align: center;padding: 5px;vertical-align: text-bottom;">fashion</i> FASHION HUB </a>
+       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#col_target">
+       <span class="navbar-toggler-icon"></span></button>
+       <div class="collapse navbar-collapse" id="col_target">
+           <ul class="navbar-nav ml-auto">
+            
+               <li class="nav-item"><a class="nav-link" href="#" style="color: yellow;">Home</a></li>
+               <li class="nav-item"><a class="nav-link" href="{% url 'base' %}" style="color: yellow;">Administration</a></li>
+               <li class="nav-item"><a class="nav-link" href="#aboutus" style="color: yellow;">About</a></li>
+               <li class="nav-item"><a class="nav-link" href="#" style="color: yellow;">Contact</a></li>
+               <li class="nav-item"><a class="nav-link" href="#" style="color: yellow;">Blogs</a></li>
+               <li class="nav-item"><a class="nav-link" href="custregister" style="color: yellow;">Login</a></li>
+           </ul>
+       </div>
+   </nav>
+   <nav aria-label="breadcrumb">
+       <div class="container-fluid">
+           <div class="row">
+                <div class="col-md-9">
+                   <ol class="breadcrumb">
+                       You are here:
+                       &nbsp
+                       {% comment %}<li class="breadcrumb-item"><a href="#">Home</a></li>{% endcomment %}
+                       <li class="breadcrumb-item active" aria-current="page"><a href="#">Home</a></li>
+                   </ol>
+               </div>
+               <div class="col-md-3 pull-right">
+                   <input type="text" class="form-control" placeholder="Search..." style="margin-top: 10px;">
+                     
+                     
+               </div>
+           </div>
+       </div>
+   </nav>
+
+   <h1 class="text-center mb-5">Shopping Cart</h1>
+
+   <div class="container my-8">
+    <div class="row">
+    
+     <div class="col-sm-8">
+     <div class="card">
+      <div class="card-body">
+       <h3>Cart</h3>
+       
+       <div class="row">
+        <div class="col-sm-3 text-center align-self-center"><img src="{{prod_img.url}}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"> </div>
+        <div class="col-sm-9">
+         <div>
+          <h5>Product 1</h5>
+          <p class="mb-2 text-muted small">Description:This trendy T-Shirt will lend an absolutely stylish appeal to your casual outfit. Team it up with a pair of blue jeans and loafers for a trendy look while stepping out for a beers with the lads. Heading for a casual lunch with friends? Throw on this T-Shirt with a pair of rugged jeans and sneakers to add a stylish flair to your look.!</p>
+          <div class="my-3">
+           <label for="quantity">Quantity:</label>
+           <a class="minus-cart btn"><i class="fas fa-minus-square fa-lg"></i></a>
+             <span id="quantity">3</span>
+           <a class="plus-cart btn"><i class="fas fa-plus-square fa-lg"></i></a>
+          </div> 
+          <div class="d-flex justify-content-between">
+           <a href="#" class="btn btn-sm btn-secondary mr-3">Remove item </a>
+           <p class="mb-0"><span><strong>Rs. 110.00</strong></span></p>
+          </div>
+         </div>
+        </div>
+       </div>
+       
+       
+       <hr class="text-muted">
+       <div class="row my-5">
+        <div class="col-sm-3 text-center align-self-center"> <img src="{% static 'app/images/product/2.jpg'%}" alt="" srcset="" class="img-fluid img-thumbnail shadow-sm" height="150" width="150"></div>
+        <div class="col-sm-9"> 
+         <div>
+          <h5>Product 2</h5>
+          <p class="mb-2 text-muted small">Description: This trendy T-Shirt will lend an absolutely stylish appeal to your casual outfit. Team it up with a pair of blue jeans and loafers for a trendy look while stepping out for a beers with the lads. Heading for a casual lunch with friends? Throw on this T-Shirt with a pair of rugged jeans and sneakers to add a stylish flair to your look.!</p>
+          <div class="my-3">
+           <label for="quantity">Quantity:</label>
+           <a class="minus-cart btn"><i class="fas fa-minus-square fa-lg"></i></a>
+             <span id="quantity">2</span>
+           <a class="plus-cart btn"><i class="fas fa-plus-square fa-lg"></i></a>
+          </div> 
+          <div class="d-flex justify-content-between">
+           <a href="#" class="btn btn-sm btn-secondary mr-3">Remove item </a>        
+           <p class="mb-0"><span><strong>Rs. 320.00</strong></span></p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      </div>
+     </div>
+   
+     <div class="col-sm-4">
+      <div class="card">
+       <div class="card-body">
+         <h3>The Total Amount of</h3>
+         <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Amount<span>Rs. 430.00</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center px-0">Shipping<span>Rs. 70.00</span></li>
+          <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
+           <div>
+              <strong>Total</strong> <small>(including VAT)</small>
+            </div>
+            <span><strong>Rs. 500.00</strong></span>
+          </li>
+         </ul>
+         <div class="d-grid"><a href="" class="btn btn-primary">Place Order</a></div>
+       </div>
+      </div>
+     </div>
+     
+    </div>
+   </div>
+   <div class="container">
+    <div class="row">
+     <div class="col-sm-8">
+      <div class="card">
+       <div class="card-body">
+         <h5 class="mb-4">We accept</h5>
+         <img src="{% static 'app/images/payment.png' %}" alt="" class="img-fluid">
+       </div>
+     </div>
+     </div>
+    </div>
+   </div>
+
+   {% endblock main-content %}
+
+   

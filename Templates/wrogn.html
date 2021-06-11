@@ -1,0 +1,200 @@
+{% load static %}
+
+<html>
+<head>
+<title>shopping website</title>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<link rel="stylesheet" 
+href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <!------------------------------------Nav-Bar------------------------------------>
+
+    
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top nav-custom">
+        <a class="navbar-brand" href="" style="text-align: center;  padding-left: 15px; padding-right: 150px;"><i class="material-icons" style="font-size: 30px; color:  yellow; text-align: center;padding: 5px;vertical-align: text-bottom;">fashion</i> FASHION HUB </a>
+       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#col_target">
+       <span class="navbar-toggler-icon"></span></button>
+       <div class="collapse navbar-collapse" id="col_target">
+           <ul class="navbar-nav ml-auto">
+               <li class="nav-item"><a class="nav-link" href="#" style="color: yellow;">Home</a></li>
+               <li class="nav-item"><a class="nav-link" href="#aboutus" style="color: yellow;">About</a></li>
+               <li class="nav-item"><a class="nav-link" href="#" style="color: yellow;">Contact</a></li>
+               <li class="nav-item"><a class="nav-link" href="#" style="color: yellow;">Blogs</a></li>
+               <li class="nav-item"><a class="nav-link" href="#" style="color: yellow;">Login</a></li>
+           </ul>
+       </div>
+   </nav>
+   <nav aria-label="breadcrumb">
+       <div class="container-fluid">
+           <div class="row">
+                <div class="col-md-9">
+                   <ol class="breadcrumb">
+                       You are here:
+                       &nbsp
+                       <li class="breadcrumb-item"><a href="#">Home</a></li>
+                       <li class="breadcrumb-item active" aria-current="page"><a href="#">Sign Up</a></li>
+                   </ol>
+               </div>
+               <div class="col-md-3 pull-right">
+                   <input type="text" class="form-control" placeholder="Search..." style="margin-top: 10px;">
+               </div>
+           </div>
+       </div>
+   </nav>
+
+<section class="on-sale">
+    <div class="container">
+        <div class="title-boxx">
+            <h2 style="text-decoration: underline;"><center>WROGN</center></h3>      
+        </div>
+        <div class="title-box">
+               <h3>Upper Wear</h3>      
+        </div>
+        
+        <div class="row">
+              {% for u in upperwears%}
+            <div class="col-md-3">
+                <div class="product-top">                                            
+                    <a href="{% url 'product' u.prod_id %}"><img src="{{u.prod_img.url}}" height="380"></a>
+                    <div class="overlay-right">
+                        <button type="button" class="btn btn-secondary" title="Quick shop">
+                               <i class="fa fa-eye"></i> 
+                        </button>
+                        <button type="button" class="btn btn-secondary" title="Add to wishlist">
+                               <i class="fa fa-heart-o"></i> 
+                        </button>
+                        <button type="button" class="btn btn-secondary" title="Add to cart">
+                               <i class="fa fa-shopping-cart"></i> 
+                        </button>
+                    </div>
+                </div>
+                <div class="product-bottom text-center">
+                    <i class="fa fa-star"></i> 
+                    <i class="fa fa-star"></i> 
+                    <i class="fa fa-star"></i> 
+                    <i class="fa fa-star"></i> 
+                    <i class="fa fa-star-half-o"></i>
+                       <h3>ID:{{u.prod_id}}</h3>
+                       <h3>{{u.prod_name}}</h3>
+                       <h5>Rs{{u.price}}</h5>
+                </div>
+              </div> 
+              {% endfor %}        
+        </div>
+       
+    </div>  
+</section>
+
+
+<section class="on-sale">
+       <div class="container">
+           
+           <div class="title-box">
+              <h3>Lower Wear</h3>      
+           </div>
+           <div class="row">
+              {% for b in bottomwears%}
+               <div class="col-md-3">
+                   <div class="product-top">
+                       <a href="{% url 'product' b.prod_id %}"><img src="{{b.prod_img.url}}" height="380"></a>
+                       <div class="overlay-right">
+                           <button type="button" class="btn btn-secondary" title="Quick shop">
+                                  <i class="fa fa-eye"></i> 
+                           </button>
+                           <button type="button" class="btn btn-secondary" title="Add to wishlist">
+                                  <i class="fa fa-heart-o"></i> 
+                           </button>
+                           <button type="button" class="btn btn-secondary" title="Add to cart">
+                                  <i class="fa fa-shopping-cart"></i> 
+                           </button>
+                       </div>
+                   </div>
+                   <div class="product-bottom text-center">
+                       <i class="fa fa-star"></i> 
+                       <i class="fa fa-star"></i> 
+                       <i class="fa fa-star"></i> 
+                       <i class="fa fa-star"></i> 
+                       <i class="fa fa-star-half-o"></i>
+                          <h3>ID:{{b.prod_id}}</h3>
+                          <h3>{{b.prod_name}}</h3>
+                          <h5>Rs{{b.price}}</h5>
+                   </div>
+               </div>
+               {% endfor %}
+           </div>
+       </div>  
+   </section>
+
+   <section class="on-sale">
+       <div class="container">
+           
+           <div class="title-box">
+                  <h3>Foot Wear</h3>      
+           </div>
+           <div class="row">
+              {% for f in footwears%}
+               <div class="col-md-3">
+                   <div class="product-top">
+                       <a href="{% url 'product' f.prod_id %}"><img src="{{f.prod_img.url}}" height="380"></a>
+                       <div class="overlay-right">
+                           <button type="button" class="btn btn-secondary" title="Quick shop">
+                                  <i class="fa fa-eye"></i> 
+                           </button>
+                           <button type="button" class="btn btn-secondary" title="Add to wishlist">
+                                  <i class="fa fa-heart-o"></i> 
+                           </button>
+                           <button type="button" class="btn btn-secondary" title="Add to cart">
+                                  <i class="fa fa-shopping-cart"></i> 
+                           </button>
+                       </div>
+                   </div>
+                   <div class="product-bottom text-center">
+                       <i class="fa fa-star"></i> 
+                       <i class="fa fa-star"></i> 
+                       <i class="fa fa-star"></i> 
+                       <i class="fa fa-star"></i> 
+                       <i class="fa fa-star-half-o"></i>
+                          <h3>ID:{{f.prod_id}}</h3>
+                          <h3>{{f.prod_name}}</h3>
+                          <h5>Rs{{f.price}}</h5>
+                   </div>
+              </div>
+              {% endfor %}
+           </div>
+       </div>  
+   </section>
+   
+   
+<!-------------------------------------Footer--------------------------------------->
+
+<section class="footer">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-4">
+                <h1>Useful Links</h1>
+                <p>Privacy Policy</p>
+                <p>Terms of Use</p>
+                <p>Return Policy</p>
+                <p>Discount Coupons</p>
+            </div>
+            <div class="col-md-4">
+                    <h1>Company</h1>
+                    <p>About Us</p>
+                    <p>Contact Us</p>
+                    <p>Career</p>
+                    <p>Affiliate</p>
+            </div>
+            <div class="col-md-4">
+                    <h1>Follow Us On</h1>
+                    <p><i class="fa fa-facebook-official"></i>Facebook</p>
+                    <p><i class="fa fa-twitter"></i>Twitter</p>
+                    <p><i class="fa fa-youtube-play"></i>YouTube</p>
+                    <p><i class="fa fa-linkedin"></i>Linkedin</p>
+            </div>
+            
+</section>

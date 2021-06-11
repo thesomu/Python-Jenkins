@@ -1,0 +1,103 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Menu</title>
+    <link rel="stylesheet" href="{% static '/Css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/Css/menuPageStyles.css' %}" />
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Fashion HUB</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown btn-group">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  Services
+                </a>
+                <ul
+                  class="dropdown-menu dropdown"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li><a class="dropdown-item" href="/viewCompanies">View Companies</a></li>
+                  <li>
+                    <a class="dropdown-item" href="/displayOrders"
+                      >View Import Orders</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">View Export Details</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">View Client Orders</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about.html">Partners</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="/out"
+                  >Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="row">
+        <form action="menu" method="POST">
+          {% csrf_token %}
+          <div class="col-12" id="menu">
+            <div class="row">
+              <div class="col-6" id="tag">
+                <h1>Select an option</h1>
+              </div>
+              <div class="col-6">
+                <div id="buttons">
+                  <button class="btn mb-5" type="submit" name="imp">
+                    Import
+                  </button>
+                  <button class="btn mt-2" type="submit" name="exp">
+                    Export
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </section>
+  </body>
+</html>

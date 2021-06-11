@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static '/Css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static '/Css/styles.css' %}" />
+    <title>Dashboard</title>
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Fashion HUB</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  aria-current="page"
+                  href="/"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about.html">Partners</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="container g-0">
+        <div class="col-6" id="form">
+          <h1>Login Dashboard</h1>
+        </div>
+        <div class="col-6" id="content">
+          <form method="POST" id="formFields" action="login">
+            {% csrf_token %}
+            <div class="mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="userid"
+                placeholder="ID"
+                name="user"
+              />
+              <input
+                type="password"
+                class="form-control"
+                id="userid"
+                placeholder="Password"
+                name="password"
+              />
+              <button type="submit" class="btn btn-light">Login</button>
+            </div>
+          </form>
+          <div>
+            {% for message in messages %}
+            <h3>{{message}}</h3>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

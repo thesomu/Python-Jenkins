@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import Orders</title>
+    <link rel="stylesheet" href="{% static '/Css/importOrdersStyles.css' %}" />
+    <link rel="stylesheet" href="{% static '/Css/bootstrap.min.css' %}" />
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Fashion HUB</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown btn-group">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  Services
+                </a>
+                <ul
+                  class="dropdown-menu dropdown"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li><a class="dropdown-item" href="/viewCompanies">View Companies</a></li>
+                  <li>
+                    <a class="dropdown-item" href="/import">
+                      Insert Import Orders</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/menu"
+                      >Back to menu</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about.html">Partners</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/out">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="container">
+        <table border="2px" cellspacing="15px" cellpadding="15px">
+          <tr>
+            <th>Import ID</th>
+            <th>Import Date</th>
+            <th>Country</th>
+            <th>Product Name</th>
+            <th>Total Cost</th>
+            <th>Status</th>
+            <th colspan="2">Actions</th>
+          </tr>
+          {% for orders in importOrders %}
+          <tr>
+            <td>{{orders.orderImport_id}}</td>
+            <td>{{orders.order_date}}</td>
+            <td>{{orders.import_product}}</td>
+            <td>{{orders.orderImport_country}}</td>
+            <td>{{orders.total_cost}}</td>
+            <td>{{orders.status_of_import}}</td>
+            <td>
+              <a href="/editImportOrder/{{ orders.id }}">Edit</a>
+            </td>
+            <td>
+              <a href="/deleteImportOrder/{{ orders.id }}">Delete</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
+    </section>
+  </body>
+</html>

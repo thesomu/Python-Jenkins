@@ -1,0 +1,156 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import</title>
+    <link
+      rel="stylesheet"
+      href="{% static '/Css/editImportPageStyles.css' %}"
+    />
+    <link rel="stylesheet" href="{% static '/Css/bootstrap.min.css' %}" />
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Fashion HUB</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item dropdown btn-group">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  aria-haspopup="true"
+                >
+                  Services
+                </a>
+                <ul
+                  class="dropdown-menu dropdown"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li><a class="dropdown-item" href="/viewCompanies">View Companies</a></li>
+                  <li>
+                    <a class="dropdown-item" href="/displayOrders"
+                      >View Import Orders</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/import"
+                      >Insert Import Order</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/menu"
+                      >Back to menu</a
+                    >
+                  </li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./about.html">Partners</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/">Logout</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <section>
+      <div class="container row g-0">
+        <div class="col-6" id="left">
+          <h3>Edit Import Order</h3>
+        </div>
+        <div class="col-6" id="right">
+          <form action="/updateImportOrder/{{orders.id}}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3" id="one">
+              <label for="id" class="form-label">Order ID</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id"
+                name="orderid"
+                value="{{orders.orderImport_id}}"
+              />
+            </div>
+            <hr class="line" />
+            <div id="two">
+              <label for="date" class="form-label">Date of Order</label>
+              <input
+                type="text"
+                class="form-control"
+                id="date"
+                name="orderdate"
+                placeholder="YYYY-MM-DD"
+                value="{{orders.order_date|date:"Y-m-d"}}"
+              />
+            </div>
+            <div id="three">
+              <label for="country" class="form-label">Exporter's Country</label>
+              <input
+                type="text"
+                class="form-control"
+                id="country"
+                name="orderCountry"
+                value="{{orders.orderImport_country}}"
+              />
+            </div>
+            <hr class="line" />
+            <div id="four">
+              <label for="product" class="form-label">Product Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="product"
+                name="orderProduct"
+                value="{{orders.import_product}}"
+              />
+            </div>
+            <div id="five">
+              <label for="sts" class="form-label">Status</label><br />
+              <select name="list" id="sts" value="{{orders.status_of_import}}">
+                <option>-----</option>
+                <option value="Delivered">Completed</option>
+                <option value="Pending">Pending</option>
+              </select>
+            </div>
+            <hr class="line" />
+            <div id="six">
+              <label for="cost" class="form-label">Total Cost</label>
+              <input
+                type="text"
+                class="form-control"
+                id="cost"
+                name="orderCost"
+                value="{{orders.total_cost}}"
+              />
+            </div>
+            <button class="btn btn-primary" type="submit">Update</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

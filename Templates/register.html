@@ -1,0 +1,153 @@
+{% extends 'theme.html' %}
+
+{% block content %}
+    <script type="text/javascript">
+        function validate()
+            {
+                var pass = document.signupform.password.value;
+                var ml = document.signupform.email.value;
+                alphaExp=/^\w+([\._]?\w+)*@\w+([\._]?\w+)*(\.\w{2,3})+$/
+
+                if(pass.length<6)
+                {
+                alert("password should be minimum of six character");
+                return false;
+                }
+                if(!ml.match(alphaExp))
+                {
+                alert("Email is not in correct format");
+                return false;
+                }
+                else
+                return true;
+            }
+            function login()
+            {
+                window.location.href="{% url 'login'%}";
+            }
+
+
+        </script>
+<style>
+    fieldset.fldset
+{
+font-style:italic;
+text-align:center;
+font-size:medium;
+}
+
+fieldset {
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+
+}
+.alert {
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+a{
+    color: #3390FF;
+}
+legend {
+    width:inherit;
+    padding:0 10px;
+    border-bottom:none;
+     font-size: 1.5em ;
+    font-weight: bold ;
+
+}
+</style>
+     <nav aria-label="breadcrumb">
+        <div class="container-fluid">
+            <div class="row">
+                 <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        You are here:
+                        &nbsp
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sign Up</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class = "container-fluid">
+        <div class="row">
+         <div class="col-md-6">
+            <img src="static/log.jpg" alt="image" class="img-fluid">
+        </div>
+            <div class="col-md-6">
+                <fieldset class="fldset">
+                	<legend>Welcome!</legend>
+                    {% for message in messages %}
+                        <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <h6> {{ message }}</h6>
+                        </div>
+                    {% endfor %}
+                    <form action="{% url 'register'%}"  method="post" name="signupform" onsubmit="validate()">
+                        {% csrf_token %}
+            <table align="center">
+                <tr>
+                    <td align="left">First Name:&nbsp</td>
+                    <td><input type="text" style="border-radius: 15px;" name="first_name" class="form-control" placeholder="First Name" required="True"></td></tr>
+
+                <tr>
+                    <td align="left">Last Name:&nbsp</td>
+                    <td><input type="text" style="border-radius: 15px;" name="last_name" class="form-control" placeholder="Last Name" required="True"></td></tr>
+
+                <tr>
+                    <td align="left">Username:&nbsp</td>
+                    <td><input type="text" style="border-radius: 15px;" name="username" class="form-control" placeholder="User Name" required="True"></td></tr>
+
+                <tr>
+                    <td align="left">Phone Number:&nbsp</td>
+                    <td><input type="number" style="border-radius: 15px;" name="phoneno" class="form-control" placeholder="Phone no" required="True"></td></tr>
+
+                <tr>
+                    <td align="left">Email ID:&nbsp</td>
+                    <td><input type="email" style="border-radius: 15px;" name="email" class="form-control" placeholder="Email" required="True"></td></tr>
+
+                <tr>
+                    <td align="left">Password:&nbsp</td>
+                    <td><input type="password" style="border-radius: 15px;" name="password" class="form-control" placeholder="Password" required="True"></td></tr>
+
+                <tr>
+                    <td align="left">Confirm Password:&nbsp</td>
+                    <td><input type="password" style="border-radius: 15px;" name="confirm_password" class="form-control" placeholder="Confirm Password" required="True">  </td></tr>
+
+            </table><br>
+                      <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+                    <button type="button" onclick="login()" class="float-right btn btn-dark">Sign in</button>
+
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

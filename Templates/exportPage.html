@@ -1,0 +1,138 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import</title>
+    <link rel="stylesheet" href="{% static '/Css/importPageStyles.css' %}" />
+    <link rel="stylesheet" href="{% static '/Css/bootstrap.min.css' %}" />
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/jquery-3.6.0.min.js' %}"></script>
+    <style>
+        div#three label {
+            margin-left: 45px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Fashion HUB</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown btn-group">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                Services
+                            </a>
+                            <ul class="dropdown-menu dropdown" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="/clientDemands">View Client Demands</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="/displayExportOrders">View Export Orders</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="/menu">Back to menu</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/out">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="container row g-0">
+            <div class="col-6" id="left">
+                <h3>Export Order</h3>
+            </div>
+            <div class="col-6" id="right">
+                <form action="/placeExportOrder/{{client.id}}" method="POST" id="exportForm">
+                    {% csrf_token %}
+                    <div class="mb-3" id="one">
+                        <label for="id" class="form-label">Order ID</label>
+                        <input type="text" class="form-control" id="id" name="orderid" />
+                    </div>
+                    <hr class="line" />
+                    <div id="two">
+                        <label for="date" class="form-label">Date of Order</label>
+                        <input type="text" class="form-control" id="date" name="orderdate" placeholder="YYYY-MM-DD" />
+                    </div>
+                    <div id="three">
+                        <label for="country" class="form-label">Client Name</label>
+                        <input type="text" class="form-control" id="client" name="clientname"
+                            value="{{client.client_name}}" />
+                    </div>
+                    <hr class="line" />
+                    <div id="four">
+                        <label for="product" class="form-label">Product Name</label>
+                        <input type="text" class="form-control" id="product" name="orderProduct"
+                            value="{{client.product_name}}" />
+                    </div>
+                    <div id="five">
+                        <label for="sts" class="form-label">Status</label><br />
+                        <select name="list" id="sts">
+                            <option>-----</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Pending">Pending</option>
+                        </select>
+                    </div>
+                    <hr class="line" />
+                    <div id="six">
+                        <label style="margin-left: 195px; white-space:nowrap" for="cost" class="form-label">Price (Per
+                            Piece)</label>
+                        <input type="text" class="form-control" id="cost" name="price" />
+                    </div>
+                    <button class="btn btn-primary" type="submit">Confirm</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function () {
+            $('form#exportForm').submit(function (e) {
+                if ($('#id').val() == '') {
+                    e.preventDefault();
+                    alert("Enter Order ID");
+                }
+                else if ($('#date').val() == '') {
+                    e.preventDefault();
+                    alert("Enter Date Of Order");
+                }
+                else if ($('#client').val() == '') {
+                    e.preventDefault();
+                    alert("Enter Client's Name");
+                }
+                else if ($("#product").val() == "") {
+                    e.preventDefault();
+                    alert("Enter Product Name");
+                }
+                else if ($('#sts').val() != 'Pending' && $('#sts').val() != 'Completed') {
+                    e.preventDefault();
+                    alert("Select Correct Status");
+                }
+                else if ($('#cost').val() == '') {
+                    e.preventDefault();
+                    alert("Enter Price(Per Piece)");
+                }
+                else {
+                    alert("Order Placed Successfully");
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

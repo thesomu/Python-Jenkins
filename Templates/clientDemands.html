@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Import Orders</title>
+    <link rel="stylesheet" href="{% static '/Css/viewCompaniesStyles.css' %}" />
+    <link rel="stylesheet" href="{% static '/Css/bootstrap.min.css' %}" />
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/jquery-3.6.0.min.js' %}"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Fashion HUB</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown btn-group">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">
+                                Services
+                            </a>
+                            <ul class="dropdown-menu dropdown" aria-labelledby="navbarDropdownMenuLink">
+                                <li><a class="dropdown-item" href="/displayExportOrders">View Export Orders</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="/menu">
+                                        Back To Menu</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/out">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="container">
+            <table border="2px" cellspacing="15px" cellpadding="15px">
+                <tr>
+                    <th>Client ID</th>
+                    <th>Product Name</th>
+                    <th>Client Name</th>
+                    <th>Client Address</th>
+                    <th>Client Country</th>
+                    <th>Quantity Demanded</th>
+                    <th>Action</th>
+                </tr>
+                {% for client in clients %}
+                <tr>
+                    <td>{{client.client_id}}</td>
+                    <td>{{client.product_name}}</td>
+                    <td>{{client.client_name}}</td>
+                    <td>{{client.client_address}}</td>
+                    <td>{{client.client_country}}</td>
+                    <td>{{client.quantity_demanded}}</td>
+                    <td>
+                        <a id="selectRecord" href="/insertExportOrder/{{ client.id }}">Select</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </section>
+</body>
+
+</html>

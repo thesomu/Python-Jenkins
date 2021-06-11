@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'Form.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
+    <title>Employee Profile</title>
+
+    <style>
+    body{
+        background: white;
+    }
+    .nav-custom{
+        background-color: #9b59b6;
+    }
+</style>
+</head>
+<body>
+<div class="top">
+    <nav class="navbar navbar-expand-md navbar-dark sticky-top nav-custom">
+        <span class="navbar-brand">Fashion HUB</span>
+        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#col_target">
+            <span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="col_target">
+            <ul class="navbar-nav ml-auto mr-5">
+                {% if employee %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'employeeLogout' %}">Logout</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="containerDiv">
+    <div>
+        <div class="title">Employee Operations</div>
+    </div>
+    <br><br>
+    <div>
+        <h5>Name: {{employee.name}}</h5>
+        <h5>ID: {{employee.id}}</h5>
+        <h5>Address: {{employee.address}}</h5>
+        <h5>Phone: {{employee.phone}}</h5>
+        <h5>Email: {{employee.email}}</h5>
+    </div>
+    <div>
+        <div style="float:left">
+            <form action="{% url 'employeeEdit' %}" method="post">
+                {% csrf_token %}
+                <input name="id" type="number" style="height:0;width:0;padding:0;border:none"
+                       value={{employee.id}}>
+                <div class="button">
+                    <input type="submit" value="Update" style="padding-left: 15px; padding-right: 15px;">
+                </div>
+            </form>
+        </div>
+        <div style="float:left; padding-left: 15px;" >
+            <form action="{% url 'attendance' %}" method="post">
+                {% csrf_token %}
+                <input name="id" type="number" style="height:0;width:0;padding:0;border:none"
+                       value={{employee.id}}>
+                <div class="button">
+                    <input type="submit" value="Attendance" style="padding-left: 15px; padding-right: 15px;">
+                </div>
+            </form>
+        </div>
+        <div style="float:left; padding-left: 15px;">
+            <form action="{% url 'attendanceIn' %}" method="post">
+                {% csrf_token %}
+                <input name="id" type="number" style="height:0;width:0;padding:0;border:none" value={{employee.id}}>
+                <input name="in" type="text" size="12" id="currentDateTime" readonly>
+                <div class="button">
+                    <input type="submit" value="IN Time" style="padding-left: 15px; padding-right: 15px;">
+                </div>
+            </form>
+        </div>
+        <div style="float:left; padding-left: 15px;">
+            <form action="{% url 'attendanceOut' %}" method="post">
+                {% csrf_token %}
+                <input name="id" type="number" style="height:0;width:0;padding:0;border:none" value={{employee.id}}>
+                <input name="out" type="text" size="12" id="currentDateTime2">
+                <div class="button">
+                    <input type="submit" value="OUT Time" style="padding-left: 15px; padding-right: 15px;">
+                </div>
+            </form>
+        </div>
+        <script>
+            var today = new Date();
+            var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+            var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+            var dateTime = date+' '+time;
+            document.getElementById("currentDateTime").value = dateTime;
+            document.getElementById("currentDateTime2").value = dateTime;
+        </script>
+    </div>
+</div>
+</body>
+</html>

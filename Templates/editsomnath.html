@@ -1,0 +1,43 @@
+{% extends 'theme.html' %}
+
+{% block content %}
+         <nav aria-label="breadcrumb">
+        <div class="container-fluid">
+            <div class="row">
+                 <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        You are here:
+                        &nbsp
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="login">Sign In</a></li>
+                        <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="/profile">Details</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Edit</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </nav>
+<form action="/custregistercustupdate/{{ ship.id }}" method="post">
+                        {% csrf_token %}
+            <table align="center">
+                <tr>
+                    <td align="left">First Name:&nbsp</td>
+                    <td><input type="text" name="first_name" placeholder="First Name" value="{{ ship.ship_fname }}"  required="True"></td></tr>
+
+                <tr>
+                    <td align="left">Last Name:&nbsp</td>
+                    <td><input type="text" name="last_name" placeholder="Last Name" value="{{ ship.ship_lname }}" required="True"></td></tr>
+
+
+                    <td align="left">Phone Number:&nbsp</td>
+                    <td><input type="number" name="phoneno" placeholder="Phone no" value="{{ ship.ship_phone }}" required="True"></td></tr>
+
+                <tr>
+                    <td align="left">Address:&nbsp</td>
+                    <td><input type="text" name="address" placeholder="Address" value="{{ ship.ship_address }}" required="True">  </td></tr>
+
+            </table><br>
+ <input type="submit" value="Submit">
+        </form>
+{% endblock %}

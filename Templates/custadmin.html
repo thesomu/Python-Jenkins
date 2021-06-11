@@ -1,0 +1,79 @@
+{% extends 'theme.html' %}
+
+{% block content %}
+<style>
+    fieldset.fldset
+{
+font-style:italic;
+text-align:center;
+font-size:medium;
+}
+
+fieldset {
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+}
+legend {
+    width:inherit;
+    padding:0 10px;
+    border-bottom:none;
+     font-size: 1.5em ;
+
+
+}
+</style>
+
+     <nav aria-label="breadcrumb">
+        <div class="container-fluid">
+            <div class="row">
+                 <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        You are here:
+                        &nbsp
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'custadmin'%}">Admin Sign In</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Admin Dashboard</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<div class="row">
+<div class="col-md-6">
+</div>
+    <div class="col-md-6">
+         <a href ="{% url 'adminlogout' %}" class="float-right">Logout</a>
+
+
+    </div>
+</div>
+<div class="container-fluid">
+
+        <div class="row" >
+            {% for adcust in admincust %}
+            <div class="col-md-4">
+
+                <div class="card" style="width: 18rem; margin-top: 20px;">
+
+            <div class="card-body">
+                 <h5 class="card-title">Customer Details</h5>
+                {{ adcust.cust_fname }}&nbsp
+                {{ adcust.cust_lname }}<br>
+                {{ adcust.cust_uname }}<br>
+                {{ adcust.cust_email }}<br>
+                {{ adcust.cust_phone }}<br><a href="/custregisteradmindelete/{{ adcust.id }}">
+                <span class="btn btn-danger float-right" >Delete</span></a>
+  </div>
+</div>
+            </div>
+            {% endfor %}
+            </div>
+        </div>
+{% endblock %}

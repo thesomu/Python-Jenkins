@@ -1,0 +1,113 @@
+{% extends 'theme.html' %}
+
+{% block content %}
+   <script type="text/javascript">
+               function signup()
+            {
+                window.location.href="custregister";
+            }
+   </script>
+
+    <style>
+    fieldset.fldset
+{
+font-style:italic;
+text-align:center;
+font-size:medium;
+}
+
+fieldset {
+    display: block;
+    margin-inline-start: 2px;
+    margin-inline-end: 2px;
+    padding-block-start: 0.35em;
+    padding-inline-start: 0.75em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.625em;
+    min-inline-size: min-content;
+}
+.alert {
+  padding: 10px;
+  background-color: #f44336;
+  color: white;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+legend {
+    width:inherit;
+    padding:0 10px;
+    border-bottom:none;
+     font-size: 1.5em ;
+    font-weight: bold ;
+    
+}
+
+</style>
+     <nav aria-label="breadcrumb">
+        <div class="container-fluid">
+            <div class="row">
+                 <div class="col-md-12">
+                    <ol class="breadcrumb">
+                        You are here:
+                        &nbsp
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sign IN</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </nav>
+     <div class = "container-fluid">
+     <div class="row">
+        <div class="col-md-6">
+            <img src="static/log.jpg" alt="image" style="width: 100%;" class="img-fluid">
+        </div>
+            <div class="col-md-6">
+                <fieldset class="fldset">
+                    <legend>Login!</legend>
+                    {% for message in messages %}
+                        <div class="alert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                    <h6> {{ message }}</h6>
+                        </div>
+                    {% endfor %}
+
+    <form action="{% url 'login'%}" method="post">
+        {% csrf_token %}
+        <table align="center">
+            <tr>
+                    <td align="left">Username:&nbsp</td>
+                    <td><input type="text" style="border-radius: 15px;" name="username" class="form-control" placeholder="User Name" required="True"></td></tr>
+
+                <tr>
+         <tr>
+                    <td align="left">Password:&nbsp</td>
+                    <td><input type="password" style="border-radius: 15px;" name="password" class="form-control" placeholder="Password" required="True"></td></tr>
+
+                <tr>
+
+        </table>
+    <br>
+                <input type="submit" class="btn btn-primary">
+    </form>
+                <button type="button" onclick="signup()" class="float-right btn btn-dark">Sign Up</button>
+                </fieldset>
+            </div>
+        </div>
+     </div>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Partners</title>
+    <link rel="stylesheet" href="{% static '/Css/partnerPageStyles.css' %}">
+    <link rel="stylesheet" href="{% static '/Css/bootstrap.min.css' %}">
+    <script src="{% static '/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/js/jquery-3.6.0.min.js' %}"></script>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Fashion HUB</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login Page</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section>
+        <div class="row g-0">
+            <div class="col-6" id="left">
+                <h2>We Work With the Best Partners</h2>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sed repudiandae tempore illum cum nihil,
+                    asperiores perspiciatis, aliquam non mollitia consequatur veritatis, laborum numquam nesciunt odio
+                    deserunt nulla quasi molestiae iste. Sed et ratione odit nisi. Perspiciatis eveniet debitis,
+                    assumenda
+                    deleniti quam, quidem inventore adipisci dolorum magnam alias, quo error aspernatur!</p>
+                <button id="showMore" class="btn">Read More</button>
+                <div id="showContent">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex ipsum, id velit
+                        praesentium fugit illum vel
+                        maiores adipisci fuga vitae. Mollitia nemo ea beatae tempora praesentium cum, natus iusto
+                        perspiciatis
+                        distinctio dolor eum vero atque odio, iste qui? Earum assumenda rerum sequi ab illo nobis cum
+                        perferendis ipsa, nulla architecto. Voluptates et ex rem, molestiae, consequuntur accusantium
+                        repudiandae inventore, delectus magni consectetur soluta quaerat sit neque mollitia odit error
+                        libero
+                        iure eaque cupiditate minima repellat ad! Soluta ut ea asperiores sed, voluptas quaerat sapiente
+                        officiis atque voluptatum illum facilis cum sint obcaecati laboriosam esse sunt dolorem possimus
+                        aspernatur. Ut, nostrum.</p>
+                    <button class="btn" id="showLess">Show Less</button>
+                </div>
+            </div>
+            <div class="col-6" id="right">
+                <div id="brand-one">
+                    <a href="https://www.usplworld.com/wrogn/" target="_blank"><img
+                            src="{% static '/images/wrogn.jpeg' %}" alt="wrogn logo" width="380px" height="330px"></a>
+                    <a href="https://www.peterengland.com/" target="_blank"><img src="{% static '/images/peter.jpg' %}"
+                            alt="peter logo" width="380px" height="340px"></a>
+                    <a href="https://flyingmachine.nnnow.com/" target="_blank"><img
+                            src="{% static '/images/flyingMachine.jpg' %}" alt="flying logo" width="380px"
+                            height="340px"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function () {
+            $('#showContent').hide();
+            $('button#showMore').on('click', function () {
+                $('#showContent').show();
+                $('#showMore').hide();
+                $('#showLess').show();
+            });
+            $('button#showLess').on('click', function () {
+                $('#showContent').hide();
+                $('#showLess').hide();
+                $('#showMore').show();
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'Form.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Employee Login</title>
+</head>
+<body>
+<div class="containerDiv">
+    <div class="title">Employee Login</div>
+    <div class="content">
+        <form action="{% url 'employeeLogin'%}" method="post">
+
+            {% csrf_token %}
+
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">User ID</span>
+                    <input type="number" placeholder="Enter employee id" name="id" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="password" placeholder="Enter password" name="password" required>
+                </div>
+            </div>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+            <div class="button">
+                <input type="submit" value="Login">
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    setTimeout(function(){
+      if ($('#msg').length > 0) {
+        $('#msg').remove();
+      }
+    }, 2000)
+
+
+</script>
+</body>
+</html>
+
